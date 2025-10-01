@@ -1,0 +1,4 @@
+body { font-family: system-ui, Arial; margin: 2rem; }
+main { max-width: 760px; }
+button { padding: .6rem 1rem; }
+pre { background: #f6f8fa; padding: 1rem; }
