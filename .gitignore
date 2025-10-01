@@ -1,6 +1,21 @@
-node_modules
-dist
-.vscode
+# Node
+node_modules/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform.tfstate.backup
+
+# Ansible
+*.retry
+
+# Local env
+.env
+.env.*
 .DS_Store
-.env*
-.terraform*
+
+# Docker
+**/.venv
+**/__pycache__/
