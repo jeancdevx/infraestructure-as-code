@@ -1,5 +1,5 @@
 {
-  "name": "infraestructure-as-code",
+  "name": "infrastructure-as-code",
   "version": "0.0.1",
   "description": "Monorepo para la plataforma de sorteos RaffleNow",
   "main": "commitlint.config.js",
