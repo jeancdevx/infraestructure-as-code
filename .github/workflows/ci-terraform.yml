@@ -1,0 +1,39 @@
+name: CI Terraform
+on:
+  pull_request:
+    branches: [development, qa, production]
+    paths: ["iac/**"]
+  push:
+    branches: [development]
+    paths: ["iac/**"]
+
+jobs:
+  tf-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Fmt
+        run: terraform fmt -check -recursive
+      - name: Validate (dev env)
+        working-directory: iac/envs/dev
+        run: |
+          terraform init -backend=false
+          terraform validate
+  tf-plan-dev:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: develop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Configure AWS OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Plan (dev)
+        working-directory: iac/envs/dev
+        run: |
+          terraform init -backend-config=backend.hcl
+          terraform plan -no-color
