@@ -1,0 +1,17 @@
+name: CI Ansible
+on:
+  pull_request:
+    branches: [development, qa, production]
+    paths: ["ansible/**"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ansible + ansible-lint
+        run: |
+          pipx install ansible
+          pipx install ansible-lint
+      - name: Lint
+        run: ansible-lint ansible/

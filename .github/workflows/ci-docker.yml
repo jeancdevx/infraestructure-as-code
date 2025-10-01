@@ -1,0 +1,15 @@
+name: CI Docker
+on:
+  pull_request:
+    branches: [development, qa, production]
+    paths: ["app/**", "ops/docker-compose.yml"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build web image
+        run: docker build -t web:ci app/web
+      - name: Compose config check
+        run: docker compose -f ops/docker-compose.yml config
