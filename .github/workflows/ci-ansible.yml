@@ -14,4 +14,4 @@ jobs:
           pipx install ansible
           pipx install ansible-lint
       - name: Lint
-        run: ansible-lint ansible/
+        run: ansible-lint config/
