@@ -1,0 +1,27 @@
+{
+  "name": "infraestructure-as-code",
+  "version": "0.0.1",
+  "description": "Monorepo para la plataforma de sorteos RaffleNow",
+  "main": "commitlint.config.js",
+  "scripts": {
+    "prepare": "husky",
+    "postinstall": "husky install || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeancdevx/infraestructure-as-code.git"
+  },
+  "keywords": [],
+  "author": "Jeancarlo Morales",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jeancdevx/infraestructure-as-code/issues"
+  },
+  "homepage": "https://github.com/jeancdevx/infraestructure-as-code#readme",
+  "devDependencies": {
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "husky": "9.1.7"
+  }
+}
